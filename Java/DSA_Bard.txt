@@ -1,0 +1,85 @@
+----------------------------------------------------------------------------------------------------------------------------------
+using Arrays.Stream (Java) - 
+
+int[] numbers = {2, 4, 6, 8, 10};
+int sumOfEvens = Arrays.stream(numbers)     // Create a stream of elements
+                        .filter(num -> num % 2 == 0)  // Filter only even numbers
+                        .reduce(0, Integer::sum);      // Sum the remaining even numbers
+System.out.println("Sum of even numbers: " + sumOfEvens);  // Output: 30
+
+/*
+Key Points:
+Operations on streams are often lazy, meaning they're not executed until a terminal operation (like reduce) is called. This can improve efficiency for certain tasks.
+Streams can be sequential or parallel. Sequential streams process elements one at a time, while parallel streams can potentially process elements concurrently on multiple cores, offering performance benefits.
+*/
+----------------------------------------------------------------------------------------------------------------------------------
+For-each loop (similar to java is present in C++11 and later) -
+
+for (int element : arrayName) {
+    // Code to be executed for each element
+}
+----------------------------------------------------------------------------------------------------------------------------------
+Length and size - 
+
+Built-in Data Types:
+    Java:
+        String: stringVariable.length()
+        Arrays: arrayName.length
+    C++:
+        std::string: stringVariable.length()
+        Arrays: arrayName.size()
+
+Collections (Java):
+    Lists: listName.size()
+    Sets: setName.size()
+    Maps: mapName.size()
+
+Container Classes (C++):
+    std::vector: vectorName.size()
+    std::list: listName.size()
+    std::set: setName.size()
+    std::map: mapName.size()
+----------------------------------------------------------------------------------------------------------------------------------
+Jagged Arrays/Vectors - 
+
+//known rows -
+Java -
+    int[][] myArray = new int[3][]; // 3 rows, each with potentially different lengths
+    myArray[0] = new int[5]; // Initialize the first row with 5 elements
+    myArray[1] = new int[2]; // Initialize the second row with 2 elements, and so on
+
+C++ -
+    std::vector<std::vector<int>> myArray(3); // Create 3 rows
+    myArray[0].resize(5); // Resize the first row to hold 5 elements
+    myArray[1].resize(2); // Resize the second row to hold 2 elements, and so on
+
+//unknown rows -
+Java -
+    int[][] myArray = new int[/* Number of rows will be determined later */][];
+    // As you determine the size of each row, create and assign the inner arrays:
+    myArray[0] = new int[4];
+    myArray[1] = new int[7];
+    // ... and so on
+
+C++ -
+    std::vector<std::vector<int>> myArray;
+    // As you determine the size of each row, push back new vectors:
+    myArray.push_back(std::vector<int>(4)); // Create a row with 4 elements
+    myArray.push_back(std::vector<int>(7)); // Create a row with 7 elements
+    // ... and so on
+
+Using ArrayList (Java) -
+    ArrayList<ArrayList<Integer>> myArray = new ArrayList<>();
+    // Create and add rows as needed:
+    ArrayList<Integer> row1 = new ArrayList<>();
+    // ... populate row1
+    myArray.add(row1);
+    // ... add more rows as required
+
+Using Vectors (C++) -
+    std::vector<std::vector<int>> myArray;
+    // Add rows as needed:
+    std::vector<int> row1 = {1, 2, 3};
+    myArray.push_back(row1);
+    // ... add more rows as required
+----------------------------------------------------------------------------------------------------------------------------------
