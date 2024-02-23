@@ -83,3 +83,7 @@ Using Vectors (C++) -
     myArray.push_back(row1);
     // ... add more rows as required
 ----------------------------------------------------------------------------------------------------------------------------------
+Sorting multi-dimensional array by specific columns -
+Java -
+    Arrays.sort(myArray, (a, b) -> Integer.compare(a[1], b[1])); // Sort by the second column
+----------------------------------------------------------------------------------------------------------------------------------
