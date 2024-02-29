@@ -111,4 +111,27 @@ public class LinkedList {
         }
         return tempNode;
     }
+
+    // public boolean set(int index, int value) {
+    //     if (index < 0 || index >= length) {
+    //         return false;
+    //     }
+    //     int i = 0;
+    //     Node tempNode = head;
+    //     while (i != index) {
+    //         tempNode = tempNode.next;
+    //         i++;
+    //     }
+    //     tempNode.value = value;
+    //     return true;
+    // }
+
+    public boolean set(int index, int value) {
+        Node temp = get(index);
+        if (temp != null) {
+            temp.value = value;
+            return true;
+        }
+        return false;
+    }
 }
