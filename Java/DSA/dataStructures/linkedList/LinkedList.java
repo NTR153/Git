@@ -100,7 +100,7 @@ public class LinkedList {
     }
 
     public Node get(int index) {
-        if (index>length || index<0) {
+        if (index>=length || index<0) {
             return null;
         }
         int i=0;
