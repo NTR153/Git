@@ -36,7 +36,7 @@ public class LinkedList {
     public void printList() {
         Node tempNode = head;
         while (tempNode != null) {
-            System.out.printf(tempNode.value + " ");
+            System.out.println(tempNode.value);
             tempNode = tempNode.next;
         }
     }
@@ -73,7 +73,42 @@ public class LinkedList {
         return tempNode;
     }
 
-    public void prepend() {
-        
+    public void prepend(int value) {
+        Node newNode = new Node(value);
+        if (length == 0) {
+            head = newNode;
+            tail = newNode;
+        }
+        else {
+            newNode.next = head;
+            head = newNode;
+        }
+        length++;
+    }
+
+    public Node removeFirst() {
+        if (length == 0) {
+            return null;
+        }
+        Node tempNode = head;
+        head = tempNode.next;
+        length--;
+        if (length == 0) {
+            tail = null;
+        }
+        return tempNode;
+    }
+
+    public Node get(int index) {
+        if (index>length || index<0) {
+            return null;
+        }
+        int i=0;
+        Node tempNode = head;
+        while (i != index) {
+            tempNode = tempNode.next;
+            i++;
+        }
+        return tempNode;
     }
 }

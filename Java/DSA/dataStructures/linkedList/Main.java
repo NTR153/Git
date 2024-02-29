@@ -6,7 +6,11 @@ public class Main {
         tempList.append(25);
         tempList.append(26);
         tempList.removeLast();
+        tempList.prepend(55);
+        tempList.removeFirst();
         tempList.printList();
-        System.out.println(tempList.getLength());
+        System.out.println("");
+        // System.out.println(tempList.get(-1));
+        // System.out.println(tempList.getLength());
     }
 }
