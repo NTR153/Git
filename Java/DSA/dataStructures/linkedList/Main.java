@@ -13,9 +13,11 @@ public class Main {
         tempList.printList();
         System.out.println(tempList.set(1, 55));
         tempList.printList();
-        System.out.println(tempList.insert(2, 65));
-        tempList.printList();
-        System.out.println(tempList.remove(3));
+        // System.out.println(tempList.insert(2, 65));
+        // tempList.printList();
+        System.out.println("");
+        System.out.println(tempList.remove(3).value);
+        System.out.println("");
         tempList.printList();
         // System.out.println(tempList.get(-1));
         // System.out.println(tempList.getLength());

@@ -153,20 +153,19 @@ public class LinkedList {
         return true;
     }
 
-    public boolean remove(int index) {
+    public Node remove(int index) {
         if (index < 0 || index >= length) {
-            return false;
+            return null;
         } else if (index == 0) {
-            removeFirst();
+            return removeFirst();
         } else if (index == length-1) {
-            removeLast();
-        } else {
-            Node tempNode1 = get(index - 1);
-            Node tempNode2 = tempNode1.next;
-            tempNode1.next = tempNode2.next;
-            tempNode2.next = null;
+            return removeLast();
         }
+        Node tempNode1 = get(index - 1);
+        Node tempNode2 = tempNode1.next;
+        tempNode1.next = tempNode2.next;
+        tempNode2.next = null;
         length--;
-        return true;
+        return tempNode2;
     }
 }
