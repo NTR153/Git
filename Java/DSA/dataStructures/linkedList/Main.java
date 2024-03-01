@@ -9,7 +9,9 @@ public class Main {
         tempList.prepend(55);
         tempList.removeFirst();
         tempList.printList();
-        System.out.println(tempList.set(8, 55));
+        System.out.println(tempList.set(1, 55));
+        tempList.printList();
+        System.out.println(tempList.insert(2, 65));
         tempList.printList();
         // System.out.println(tempList.get(-1));
         // System.out.println(tempList.getLength());
