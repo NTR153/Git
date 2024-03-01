@@ -152,4 +152,21 @@ public class LinkedList {
         length++;
         return true;
     }
+
+    public boolean remove(int index) {
+        if (index < 0 || index >= length) {
+            return false;
+        } else if (index == 0) {
+            removeFirst();
+        } else if (index == length-1) {
+            removeLast();
+        } else {
+            Node tempNode1 = get(index - 1);
+            Node tempNode2 = tempNode1.next;
+            tempNode1.next = tempNode2.next;
+            tempNode2.next = null;
+        }
+        length--;
+        return true;
+    }
 }
