@@ -15,6 +15,6 @@ public class Main {
         System.out.println("");
         // System.out.println(tempList.get(-1));
         // System.out.println(tempList.getLength());
-        System.out.println(tempList.findMiddleNode().value);
+        System.out.println(tempList.hasLoop());
     }
 }

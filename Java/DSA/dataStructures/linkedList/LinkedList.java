@@ -41,6 +41,29 @@ public class LinkedList {
         }
     }
 
+    public void printAll() {
+        if (length == 0) {
+            System.out.println("Head: null");
+            System.out.println("Tail: null");
+        } else {
+            System.out.println("Head: " + head.value);
+            System.out.println("Tail: " + tail.value);
+        }
+        System.out.println("Length:" + length);
+        System.out.println("\nLinked List:");
+        if (length == 0) {
+            System.out.println("empty");
+        } else {
+            printList();
+        }
+    }
+    
+    public void makeEmpty() {
+        head = null;
+        tail = null;
+        length = 0;
+    }
+
     public void append(int Value) {
         Node newNode = new Node(Value);
         if (length == 0) {
@@ -197,5 +220,19 @@ public class LinkedList {
 	        i++;
 	    }
 	    return tempNode;
+	}
+
+    public boolean hasLoop() {
+        // Floyd's cycle-finding algorithm (also known as the "tortoise and the hare" algorithm) to detect the loop.
+	    Node slow = head;
+	    Node fast = head;
+	    while (slow!=tail && fast!=null) {
+	        slow = slow.next;
+	        fast = (fast.next!=null) ? fast.next.next : null;
+	        if (slow == fast) {
+	            return true;
+	        }
+	    }
+	    return false;
 	}
 }
