@@ -170,7 +170,7 @@ public class LinkedList {
     }
 
     public void reverse() {
-        if (length > 0) {
+        if (length > 1) {
             Node tempNode = head;
             head = tail;
             tail = tempNode;
@@ -185,4 +185,17 @@ public class LinkedList {
             tempNode.next = beforeNode;
         }
     }
+
+    public Node findMiddleNode() {
+        Node tempNode = head;
+	    if (length == 0) return null;
+	    tempNode = head;
+	    int middleIndex = length/2;
+	    int i=0;
+	    while (i!=middleIndex) {
+	        tempNode = tempNode.next;
+	        i++;
+	    }
+	    return tempNode;
+	}
 }

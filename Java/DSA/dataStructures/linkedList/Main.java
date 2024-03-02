@@ -12,7 +12,9 @@ public class Main {
         tempList.reverse();
         System.out.println("");
         tempList.printList();
+        System.out.println("");
         // System.out.println(tempList.get(-1));
         // System.out.println(tempList.getLength());
+        System.out.println(tempList.findMiddleNode().value);
     }
 }
