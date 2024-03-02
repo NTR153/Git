@@ -168,4 +168,21 @@ public class LinkedList {
         length--;
         return tempNode2;
     }
+
+    public void reverse() {
+        if (length > 0) {
+            Node tempNode = head;
+            head = tail;
+            tail = tempNode;
+            Node afterNode = tempNode.next;
+            Node beforeNode = null;
+            while (tempNode != head) {
+                tempNode.next = beforeNode;
+                beforeNode = tempNode;
+                tempNode = afterNode;
+                afterNode = tempNode.next;
+            }
+            tempNode.next = beforeNode;
+        }
+    }
 }
