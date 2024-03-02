@@ -33,6 +33,16 @@ public class LinkedList {
         return length;
     }
 
+    public int getLengthIfNotPresentByDefault() {
+        int returnLength = (head == null) ? 0 : 1;
+	    Node tempNode = head;
+	    while (tempNode != tail) {
+	        returnLength++;
+	        tempNode = tempNode.next;
+	    }
+        return returnLength;
+    }
+
     public void printList() {
         Node tempNode = head;
         while (tempNode != null) {
@@ -234,5 +244,23 @@ public class LinkedList {
 	        }
 	    }
 	    return false;
+	}
+
+    public Node findKthFromEnd(int k) {
+	    int length = (head == null) ? 0 : 1;
+	    Node tempNode = head;
+	    while (tempNode != tail) {
+	        length++;
+	        tempNode = tempNode.next;
+	    }
+	    if (length == 0 || k>length) return null;
+	    tempNode = head;
+	    int index = length - k;
+	    int i = 0;
+	    while (i != index) {
+	        tempNode = tempNode.next;
+	        i++;
+	    }
+	    return tempNode;
 	}
 }
