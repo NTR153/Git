@@ -1,5 +1,7 @@
 package dataStructures.linkedList;
 
+import java.util.HashSet;
+
 public class LinkedList {
     private Node head;
     private Node tail;
@@ -263,4 +265,58 @@ public class LinkedList {
 	    }
 	    return tempNode;
 	}
+
+    public void partitionList(int x) {
+        // Given a value x you need to rearrange the linked list such that all nodes with a value less than x come before all nodes with a value greater than or equal to x
+        if (head == null) return;
+        Node prevSeparatingNode = null;
+        Node separatingNode = head;
+        Node prevSearchNode = null;
+        Node searchNode = head;
+        Node tempNode = null;
+        while (searchNode != null) {
+            if (searchNode.value < x && separatingNode.value >= x) {
+                tempNode = searchNode;
+                searchNode = searchNode.next;
+                prevSearchNode.next = searchNode;
+                tempNode.next = separatingNode;
+                if (prevSeparatingNode != null) {
+                    prevSeparatingNode.next = tempNode;
+                    prevSeparatingNode = tempNode;
+                } else {
+                    head = tempNode;
+                    prevSeparatingNode = head;
+                }
+                // tempNode = null;
+            } else {
+                prevSearchNode = searchNode;
+                searchNode = searchNode.next;
+            }
+            if (separatingNode.value < x) {
+                prevSeparatingNode = separatingNode;
+                separatingNode = separatingNode.next;
+            }
+        }
+    }
+
+    public void removeDuplicates() {
+        HashSet<Integer> values = new HashSet<>();
+        if (head == null) return;
+        Node traverseNode = head;
+        Node preNode = null;
+        Node tempNode = null;
+        while (traverseNode!=null) {
+            if (values.contains(traverseNode.value)) {
+                values.add(traverseNode.value);
+                tempNode = traverseNode;
+                traverseNode = traverseNode.next;
+                preNode.next = traverseNode;
+                tempNode.next = null;
+            } else {
+                values.add(traverseNode.value);
+                preNode = traverseNode;
+                traverseNode = traverseNode.next;
+            }
+        }
+    }
 }

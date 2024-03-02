@@ -15,6 +15,9 @@ public class Main {
         System.out.println("");
         // System.out.println(tempList.get(-1));
         // System.out.println(tempList.getLength());
-        System.out.println(tempList.getLengthIfNotPresentByDefault());
+        // System.out.println(tempList.findKthFromEnd(5).value);
+
+        tempList.partitionList(26);
+        tempList.printList();
     }
 }
