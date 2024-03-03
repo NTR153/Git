@@ -319,4 +319,14 @@ public class LinkedList {
             }
         }
     }
+
+    public int binaryToDecimal() {
+        int num = 0;
+        Node tempNode = head;
+        for (int i=length-1; i>=0; i--) {
+            num += Math.pow(2,i)*tempNode.value;
+            tempNode = tempNode.next;
+        }
+        return num;
+    }
 }
