@@ -147,19 +147,22 @@ public class LinkedList {
         return tempNode;
     }
 
-    // public boolean set(int index, int value) {
-    //     if (index < 0 || index >= length) {
-    //         return false;
-    //     }
-    //     int i = 0;
-    //     Node tempNode = head;
-    //     while (i != index) {
-    //         tempNode = tempNode.next;
-    //         i++;
-    //     }
-    //     tempNode.value = value;
-    //     return true;
-    // }
+    /*Udemy Solution */
+    /*
+    public boolean set(int index, int value) {
+        if (index < 0 || index >= length) {
+            return false;
+        }
+        int i = 0;
+        Node tempNode = head;
+        while (i != index) {
+            tempNode = tempNode.next;
+            i++;
+        }
+        tempNode.value = value;
+        return true;
+    }
+    */
 
     public boolean set(int index, int value) {
         Node temp = get(index);
@@ -234,6 +237,21 @@ public class LinkedList {
 	    return tempNode;
 	}
 
+    /*Udemy Solution */
+    /*
+    public Node findMiddleNode() {
+	    Node slow = head;
+	    Node fast = head;
+ 
+	    while (fast != null && fast.next != null) {
+		slow = slow.next;
+		fast = fast.next.next;
+	    }
+ 
+	    return slow;
+	}
+    */
+
     public boolean hasLoop() {
         // Floyd's cycle-finding algorithm (also known as the "tortoise and the hare" algorithm) to detect the loop.
 	    Node slow = head;
@@ -265,6 +283,28 @@ public class LinkedList {
 	    }
 	    return tempNode;
 	}
+
+    /*Udemy Solution */
+    /*
+    public Node findKthFromEnd(int k) {
+        Node slow = head;
+        Node fast = head;
+ 
+        for (int i = 0; i < k; i++) {
+            if (fast == null) {
+                return null;
+            }
+            fast = fast.next;
+        }
+ 
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+ 
+        return slow;
+    }
+    */
 
     public void partitionList(int x) {
         // Given a value x you need to rearrange the linked list such that all nodes with a value less than x come before all nodes with a value greater than or equal to x
@@ -299,6 +339,35 @@ public class LinkedList {
         }
     }
 
+    /*Udemy Solution */
+    /*
+    public void partitionList(int x) {
+        if (head == null) return;
+ 
+        Node dummy1 = new Node(0);
+        Node dummy2 = new Node(0);
+        Node prev1 = dummy1;
+        Node prev2 = dummy2;
+        Node current = head;
+ 
+        while (current != null) {
+            if (current.value < x) {
+                prev1.next = current;
+                prev1 = current;
+            } else {
+                prev2.next = current;
+                prev2 = current;
+            }
+            current = current.next;
+        }
+ 
+        prev2.next = null;
+        prev1.next = dummy2.next;
+ 
+        head = dummy1.next;
+    }  
+     */
+
     public void removeDuplicates() {
         HashSet<Integer> values = new HashSet<>();
         if (head == null) return;
@@ -320,6 +389,25 @@ public class LinkedList {
         }
     }
 
+    /*Udemy Solution */
+    /*
+    public void removeDuplicates() {
+        Set<Integer> values = new HashSet<>();
+        Node previous = null;
+        Node current = head;
+        while (current != null) {
+            if (values.contains(current.value)) {
+                previous.next = current.next;
+                length -= 1;
+            } else {
+                values.add(current.value);
+                previous = current;
+            }
+            current = current.next;
+        }
+    }
+     */
+
     public int binaryToDecimal() {
         int num = 0;
         Node tempNode = head;
@@ -330,8 +418,21 @@ public class LinkedList {
         return num;
     }
 
+    /*Udemy Solution */
+    /*
+    public int binaryToDecimal() {
+        int num = 0;
+        Node current = head;
+        while (current != null) {
+            num = num * 2 + current.value;
+            current = current.next;
+        }
+        return num;
+    }
+    */
+
     public void reverseBetween(int m, int n) {
-        if (m<0 || n<0 || m>length || n>length || m>n || length == 0) {
+        if (m<0 || n<0 || m>length || n>length || m>n || m == n || length == 0) {
             return;
         }
         int i=0;
@@ -353,15 +454,38 @@ public class LinkedList {
                 head.next = traversingNode.next;
                 head = traversingNode;
                 traversingNode.next = prevNode;
+                return;
             }
             prevNode = traversingNode;
             traversingNode = nextNode;
-            if (traversingNode.next==null) {
-                return;
-            } else {
-                nextNode = traversingNode.next;
-            }
+            nextNode = traversingNode.next;
             i++;
         }
     }
+
+    /*Udemy Solution */
+    /*
+    public void reverseBetween(int startIndex, int endIndex) {
+        if (head == null) return;
+    
+        Node dummyNode = new Node(0);
+        dummyNode.next = head;
+        Node previousNode = dummyNode;
+    
+        for (int i = 0; i < startIndex; i++) {
+            previousNode = previousNode.next;
+        }
+    
+        Node currentNode = previousNode.next;
+    
+        for (int i = 0; i < endIndex - startIndex; i++) {
+            Node nodeToMove = currentNode.next;
+            currentNode.next = nodeToMove.next;
+            nodeToMove.next = previousNode.next;
+            previousNode.next = nodeToMove;
+        }
+    
+        head = dummyNode.next;
+    }
+    */
 }
