@@ -1,5 +1,7 @@
 package dataStructures.doublyLinkedList;
 
+import dataStructures.temp;
+
 public class DoublyLinkedList {
     private Node head;
     private Node tail;
@@ -126,16 +128,33 @@ public class DoublyLinkedList {
         Node tempNode = head;
         if (index==0) {
             prepend(value);
+            return true;
         } else if (index==length) {
             append(value);
-        } else {
-            tempNode=get(index);
-            newNode.prev=tempNode.prev;
-            newNode.next=tempNode;
-            tempNode.prev=newNode;
-            newNode.prev.next=newNode;
-        }
+            return true;
+        } 
+        tempNode=get(index);
+        newNode.prev=tempNode.prev;
+        newNode.next=tempNode;
+        tempNode.prev=newNode;
+        newNode.prev.next=newNode;
         length++;
         return true;
+    }
+
+    public Node remove(int index) {
+        if (index<0 || index>=length) return null;
+        Node tempNode = get(index);
+        if (index==0) {
+            return removeFirst();
+        } else if(index==length-1) {
+            return removeLast();
+        } 
+        tempNode.prev.next = tempNode.next;
+        tempNode.next.prev = tempNode.prev;
+        tempNode.prev=null;
+        tempNode.next=null;
+        length--;
+        return tempNode;
     }
 }
