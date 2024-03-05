@@ -1,7 +1,5 @@
 package dataStructures.doublyLinkedList;
 
-import dataStructures.temp;
-
 public class DoublyLinkedList {
     private Node head;
     private Node tail;
