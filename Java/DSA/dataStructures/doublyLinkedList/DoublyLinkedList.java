@@ -101,10 +101,14 @@ public class DoublyLinkedList {
     public Node get(int index) {
         if (length==0 || index<0 || index>=length) return null;
         Node tempNode = head;
-        int i=0;
-        while (i!=index) {
-            tempNode = tempNode.next;
-            i++;
+        if (index<length/2) {
+            for (int i=0; i<index; i++)
+            tempNode=tempNode.next;
+        } else {
+            tempNode = tail;
+            for (int i=length-1; i>index; i--) {
+                tempNode=tempNode.prev;
+            }
         }
         return tempNode;
     }
