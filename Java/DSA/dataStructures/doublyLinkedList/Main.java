@@ -8,7 +8,8 @@ public class Main {
         tempList.append(4);
         // tempList.removeFirst();
         tempList.prepend(5);
+        tempList.set(5, 6);
         tempList.printList();
-        System.out.println(tempList.get(3).value);
+        // System.out.println(tempList.get(3).value);
     }
 }
