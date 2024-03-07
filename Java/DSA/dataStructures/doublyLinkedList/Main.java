@@ -11,7 +11,7 @@ public class Main {
         tempList.set(5, 6);
         tempList.printList();
         System.out.println();
-        tempList.remove(4);
+        tempList.reverse();
         tempList.printList();
         System.out.println("Length : " + tempList.getLength());
     }
