@@ -155,4 +155,12 @@ public class DoublyLinkedList {
         length--;
         return tempNode;
     }
+
+    //Swap First and Last Node's values
+    public void swapFirstLast() {
+	    if (length<2) return;
+	    tail.value = tail.value+head.value;
+	    head.value = tail.value-head.value;
+	    tail.value = tail.value-head.value;
+	}
 }
