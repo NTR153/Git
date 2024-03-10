@@ -53,6 +53,7 @@ public class Queue {
             last=newNode;
         } else {
             last.next=newNode;
+            last=newNode;
         }
         length++;
     }
