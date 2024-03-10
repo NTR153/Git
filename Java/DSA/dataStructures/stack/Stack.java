@@ -45,4 +45,12 @@ public class Stack {
         }
         height++;
     }
+
+    public Node pop() {
+        if (height==0) return null;
+        Node tempNode=top;
+        top=tempNode.next;
+        tempNode.next=null;
+        return tempNode;
+    }
 }

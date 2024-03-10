@@ -6,6 +6,8 @@ public class Main {
         tempStack.push(2);
         System.out.println("Height : " + tempStack.getHeight());
         System.out.println("Top : " + tempStack.getTop().value);
-        tempStack.printStack();
+        System.out.println(tempStack.pop().value);
+        System.out.println(tempStack.pop().value);
+        // tempStack.printStack();
     }
 }
