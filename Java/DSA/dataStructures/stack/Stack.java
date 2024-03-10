@@ -51,6 +51,7 @@ public class Stack {
         Node tempNode=top;
         top=tempNode.next;
         tempNode.next=null;
+        height--;
         return tempNode;
     }
 }
