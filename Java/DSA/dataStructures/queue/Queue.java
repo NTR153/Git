@@ -60,8 +60,13 @@ public class Queue {
     public Node dequeue() {
         if (length==0) return null;
         Node tempNode = first;
-        first=tempNode.next;
-        tempNode.next=null;
+        if (length==1) {
+            first=null;
+            last=null;
+        } else {
+            first=tempNode.next;
+            tempNode.next=null;
+        }
         length--;
         return tempNode;
     }
