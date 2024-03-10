@@ -183,4 +183,59 @@ public class DoublyLinkedList {
             tempNode = nextNode;
 	    }
 	}
+
+    public boolean isPalindrome() {
+	    
+	    if (length<=1) return true;
+	    
+	    int[] valuesArray = new int[length];
+	    
+	    Node tempNode = head;
+	    for (int i=0; i<length; i++) {
+	        valuesArray[i] = tempNode.value;
+	        tempNode=tempNode.next;
+	    }
+	    
+	    tempNode = tail;
+	    for (int i=length-1; i>=0; i--) {
+	        if (valuesArray[length-1-i] != tempNode.value) return false;
+	        tempNode=tempNode.prev;
+	    }
+	    return true;
+	}
+
+    //Udemy Solution
+    /*
+    public boolean isPalindrome() {
+        if (length <= 1) return true;
+        
+        Node forwardNode = head;
+        Node backwardNode = tail;
+        for (int i = 0; i < length / 2; i++) {
+            if (forwardNode.value != backwardNode.value) return false;
+            forwardNode = forwardNode.next;
+            backwardNode = backwardNode.prev;
+        }
+        return true;
+    }
+     */
+
+    // function that swaps the values of adjacent nodes in the linked list
+    public void swapPairs() {
+        if (length<=1) return;
+        Node tempNode = head;
+        Node prevNode = null;
+        Node nextNode = null;
+        int i = 0;
+        while(tempNode!=null) {
+            nextNode=tempNode.next;
+            if (i%2==1) {
+                tempNode.next=prevNode;
+                tempNode.prev=nextNode;
+            }
+            i++;
+            prevNode=tempNode;
+            tempNode=nextNode;
+        }
+    }
 }
