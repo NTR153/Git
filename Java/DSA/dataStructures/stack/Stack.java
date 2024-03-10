@@ -2,6 +2,12 @@ package dataStructures.stack;
 
 public class Stack {
 
+    //For Stack, we add and remove items from the top
+    //to have only O(1) time complexity
+    //This is also known as LIFO (Last In First Out)
+    //The bottom points to null
+    //Also, no node named bottom is required for simple stack
+
     private Node top;
     private int height;
 
