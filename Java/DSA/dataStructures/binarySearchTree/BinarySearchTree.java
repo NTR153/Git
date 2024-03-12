@@ -1,7 +1,5 @@
 package dataStructures.binarySearchTree;
 
-import dataStructures.temp;
-
 public class BinarySearchTree {
     // Full tree -> Either zero or two nodes on every node
     // Perfect tree -> any level on the tree that has any node/s is completely filled across
