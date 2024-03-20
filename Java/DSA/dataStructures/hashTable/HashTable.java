@@ -1,4 +1,4 @@
-package dataStructures.hashTables;
+package dataStructures.hashTable;
 
 /**
  * HastTable
@@ -34,12 +34,22 @@ public class HashTable {
 
     public void printTable() {
         for (int i=0; i<size; i++) {
-            System.out.print(i + " : ");
+            System.out.println(i + " : ");
             Node tempNode = dataMap[i];
             while (tempNode != null) {
                 System.out.println(" { " + tempNode.key + " = " + tempNode.value + " } ");
                 tempNode = tempNode.next;
             }
         }
+    }
+
+    private int hash(String key) {
+        int hash = 0;
+        char[] keyChars = key.toCharArray();
+        for (int i=0; i<keyChars.length; i++) {
+            int asciiValue = keyChars[i];
+            hash = (hash+asciiValue*23) % dataMap.length;
+        }
+        return hash;
     }
 }
