@@ -52,4 +52,19 @@ public class HashTable {
         }
         return hash;
     }
+
+    public void set(String key, int value) {
+        int index = hash(key);
+        Node newNode = new Node(key, value);
+        if (dataMap[index]==null) {
+            dataMap[index]=newNode;
+        }
+        else {
+            Node tempNode = dataMap[index];
+            while (tempNode.next!=null) {
+                tempNode=tempNode.next;
+            }
+            tempNode.next=newNode;
+        }
+    }
 }
