@@ -1,5 +1,7 @@
 package dataStructures.hashTable;
 
+import java.util.ArrayList;
+
 /**
  * HastTable
  */
@@ -43,7 +45,7 @@ public class HashTable {
         }
     }
 
-    private int hash(String key) {
+    private int hash(String key) {          // O(1)
         int hash = 0;
         char[] keyChars = key.toCharArray();
         for (int i=0; i<keyChars.length; i++) {
@@ -53,6 +55,10 @@ public class HashTable {
         return hash;
     }
 
+    // O(1) as hash method is O(1) and a very
+    // good, randomized hash table is considered
+    // Also, the iterations whithin while loop 
+    // are unknown
     public void set(String key, int value) {
         int index = hash(key);
         Node newNode = new Node(key, value);
@@ -66,5 +72,31 @@ public class HashTable {
             }
             tempNode.next=newNode;
         }
+    }
+
+    // O(1) as hash method is O(1) and a very
+    // good, randomized hash table is considered
+    // Also, the iterations whithin while loop 
+    // are unknown
+    public int get(String key) {
+        int index = hash(key);
+        Node tempNode = dataMap[index];
+        while (tempNode!=null) {
+            if (tempNode.key.equals(key)) return tempNode.value;
+            tempNode=tempNode.next;
+        }
+        return 0;
+    }
+
+    public ArrayList keys() {
+        ArrayList<String> allKeys = new ArrayList<>();
+        for (int i=0; i<size; i++) {
+            Node tempNode = dataMap[i];
+            while (tempNode!=null) {
+                allKeys.add(tempNode.key);
+                tempNode = tempNode.next;
+            }
+        }
+        return allKeys;
     }
 }
