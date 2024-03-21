@@ -88,7 +88,7 @@ public class HashTable {
         return 0;
     }
 
-    public ArrayList keys() {
+    public ArrayList<String> keys() {
         ArrayList<String> allKeys = new ArrayList<>();
         for (int i=0; i<size; i++) {
             Node tempNode = dataMap[i];
