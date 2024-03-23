@@ -59,7 +59,7 @@ public class HashTable {
     // good, randomized hash table is considered
     // Also, the iterations whithin while loop 
     // are unknown
-    public void set(String key, int value) {
+    public void set(String key, int value) {            //adds another pair even if the key exists
         int index = hash(key);
         Node newNode = new Node(key, value);
         if (dataMap[index]==null) {
@@ -73,6 +73,46 @@ public class HashTable {
             tempNode.next=newNode;
         }
     }
+
+    // public void set(String key, int value) {        //update the value if key exists
+	//     Node newNode = new Node(key,value);
+	//     int index = hash(key);
+	//     if (dataMap[index]==null) {
+	//         dataMap[index] = newNode;
+	//     } else {
+    //         Node tempNode = dataMap[index];
+	//         while (tempNode.next!=null) {
+	//             if (tempNode.key.equals(key)) {
+	//                 tempNode.value = value;
+	//                 return;
+	//             }
+	//             tempNode = tempNode.next;
+	//         }
+	//         tempNode.next = newNode;
+	//     }
+	// }
+
+    // public void set(String key, int value) {            //add value to existing value corresponding to the key
+    //     int index = hash(key);
+    //     Node newNode = new Node(key, value);
+    //     if (dataMap[index] == null) {
+    //         dataMap[index] = newNode;
+    //     } else {
+    //         Node temp = dataMap[index];
+    //         if (temp.key == key) {
+    //             temp.value += value;
+    //             return;
+    //         }
+    //         while (temp.next != null) {
+    //             temp = temp.next;
+    //             if (temp.key == key) {
+    //                 temp.value += value;
+    //                 return;
+    //             }
+    //         }
+    //         temp.next = newNode;
+    //     }
+    // }
 
     // O(1) as hash method is O(1) and a very
     // good, randomized hash table is considered
