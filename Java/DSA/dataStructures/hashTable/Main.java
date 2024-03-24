@@ -1,6 +1,7 @@
 package dataStructures.hashTable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +25,15 @@ public class Main {
         int[] nums = {1, 2, 3, 2, 1, 4, 5, 4};
         List<Integer> duplicates = findDuplicates(nums);
         System.out.println(duplicates); 
+
+        System.out.println("1st set:");
+        System.out.println(groupAnagrams(new String[]{"eat", "tea", "tan", "ate", "nat", "bat"}));
+
+        System.out.println("\n2nd set:");
+        System.out.println(groupAnagrams(new String[]{"abc", "cba", "bac", "foo", "bar"}));
+
+        System.out.println("\n3rd set:");
+        System.out.println(groupAnagrams(new String[]{"listen", "silent", "triangle", "integral", "garden", "ranged"}));
         
     }
 
@@ -102,5 +112,49 @@ public class Main {
     //     }
  
     //     return null;
+    // }
+
+    public static List<List<String>> groupAnagrams(String[] strings) {
+        List<List<String>> groupedAnagrams = new ArrayList<>();
+        Map<String,ArrayList<Integer>> tempHashMap = new HashMap<>();
+        for (int i=0; i<strings.length; i++) {
+            char[] tempArray = strings[i].toCharArray();
+            Arrays.sort(tempArray);
+            String tempString = new String(tempArray);
+            if (tempHashMap.containsKey(tempString)) tempHashMap.get(tempString).add(i);        // add indexes of anagrams for canonical strings
+            else {
+                ArrayList<Integer> tempIntList = new ArrayList<>();
+                tempIntList.add(i);
+                tempHashMap.put(tempString,tempIntList);
+            }
+        }
+        for (Map.Entry<String,ArrayList<Integer>> entry : tempHashMap.entrySet()) {
+            ArrayList<String> tempArray = new ArrayList<>();
+            for (int i : entry.getValue()) {
+                tempArray.add(strings[i]);                                                      // get strings by indices
+            }
+            groupedAnagrams.add(tempArray);
+        }
+        return groupedAnagrams;
+    }
+
+    // public static List<List<String>> groupAnagrams(String[] strings) {          // Udemy Solution
+    //     Map<String, List<String>> anagramGroups = new HashMap<>();
+ 
+    //     for (String string : strings) {
+    //         char[] chars = string.toCharArray();
+    //         Arrays.sort(chars);
+    //         String canonical = new String(chars);
+ 
+    //         if (anagramGroups.containsKey(canonical)) {
+    //             anagramGroups.get(canonical).add(string);
+    //         } else {
+    //             List<String> group = new ArrayList<>();
+    //             group.add(string);
+    //             anagramGroups.put(canonical, group);
+    //         }
+    //     }
+ 
+    //     return new ArrayList<>(anagramGroups.values());
     // }
 }
