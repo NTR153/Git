@@ -157,4 +157,74 @@ public class Main {
  
     //     return new ArrayList<>(anagramGroups.values());
     // }
+
+    // Given an array of integers nums and a target integer target, 
+    // find the indices of two numbers in the array that add up to the target.
+    public static int[] twoSum(int[] arr, int sum) {
+        int[] returnArr = new int[0];
+        for (int i=0; i<arr.length; i++) {
+            for (int j=i+1; j<arr.length; j++) {
+                if (arr[i]+arr[j]==sum) {
+                    returnArr = new int[2];
+                    returnArr[0] = i;
+                    returnArr[1] = j;
+                    return returnArr;
+                }
+            }
+        }
+        return returnArr;
+    }
+
+    // public static int[] twoSum(int[] nums, int target) {             // Udemy Solution
+    //     Map<Integer, Integer> numMap = new HashMap<>();
+ 
+    //     for (int i = 0; i < nums.length; i++) {
+    //         int num = nums[i];
+    //         int complement = target - num;
+ 
+    //         if (numMap.containsKey(complement)) {
+    //             return new int[]{numMap.get(complement), i};
+    //         }
+    //         numMap.put(num, i);
+    //     }
+ 
+    //     return new int[]{};
+    // }
+
+    // Given an array of integers nums and a target integer target, 
+    // write a method called subarraySum that finds the indices of a contiguous subarray in nums 
+    // that add up to the target sum using a hash table (HashMap).
+
+    public static int[] subarraySum(int[] nums, int target) {
+        HashMap tempHashMap = new HashMap<Integer, Integer>();
+        for (int i=0; i<nums.length; i++) {
+            int tempSum = nums[i];
+            if (tempSum==target) {
+                return new int[] {i,i};
+            }
+            for (int j=i+1; j<nums.length; j++) {
+                tempSum+=nums[j];
+                if (tempSum==target) {
+                    return new int[] {i,j};
+                }
+            }
+        }
+        return new int[]{};
+    }
+
+    // public static int[] subarraySum(int[] nums, int target) {        // Udemy solution
+    //     Map<Integer, Integer> sumIndex = new HashMap<>();
+    //     sumIndex.put(0, -1);
+    //     int currentSum = 0;
+ 
+    //     for (int i = 0; i < nums.length; i++) {
+    //         currentSum += nums[i];
+    //         if (sumIndex.containsKey(currentSum - target)) {
+    //             return new int[]{sumIndex.get(currentSum - target) + 1, i};
+    //         }
+    //         sumIndex.put(currentSum, i);
+    //     }
+ 
+    //     return new int[]{};
+    // }
 }
