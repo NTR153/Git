@@ -247,4 +247,26 @@ public class Main {
         }
         return true;
     }
+
+    // Given two integer arrays arr1 and arr2, and an integer target, write a method named findPairs 
+    // that finds all pairs of integers such that one integer is from arr1, the other is from arr2, 
+    // and their sum equals the target value.
+
+    public static List<int[]> findPairs(int[] arr1, int[] arr2, int target) {        // Udemy Solution
+        Set<Integer> mySet = new HashSet<>();
+        List<int[]> pairs = new ArrayList<>();
+ 
+        for (int num : arr1) {
+            mySet.add(num);
+        }
+ 
+        for (int num : arr2) {
+            int complement = target - num;
+            if (mySet.contains(complement)) {
+                pairs.add(new int[]{complement, num});
+            }
+        }
+ 
+        return pairs;
+    }
 }
