@@ -3,8 +3,10 @@ package dataStructures.hashTable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
@@ -196,7 +198,6 @@ public class Main {
     // that add up to the target sum using a hash table (HashMap).
 
     public static int[] subarraySum(int[] nums, int target) {
-        HashMap tempHashMap = new HashMap<Integer, Integer>();
         for (int i=0; i<nums.length; i++) {
             int tempSum = nums[i];
             if (tempSum==target) {
@@ -227,4 +228,13 @@ public class Main {
  
     //     return new int[]{};
     // }
+
+    // You are given a list of integers, myList, where some of the elements may be repeated. 
+    // Your task is to write a Java method that removes all duplicate elements from the list 
+    // and returns a new list containing only the unique elements
+
+    public static List<Integer> removeDuplicates(List<Integer> myList) {         // Udemy Solution
+        Set<Integer> uniqueSet = new HashSet<>(myList);
+        return new ArrayList<>(uniqueSet);
+    }
 }
