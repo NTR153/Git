@@ -237,4 +237,14 @@ public class Main {
         Set<Integer> uniqueSet = new HashSet<>(myList);
         return new ArrayList<>(uniqueSet);
     }
+
+    // Write a Java program to determine if a given string contains all unique characters or not.
+    public static boolean hasUniqueChars(String inputString) {
+        HashSet<Character> tempHashSet = new HashSet<>();
+        for (char i : inputString.toCharArray()) {
+            if (tempHashSet.add(i)) continue;
+            else return false;
+        }
+        return true;
+    }
 }
