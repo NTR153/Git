@@ -1,5 +1,6 @@
 package dataStructures.hashTable;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -7,36 +8,47 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class Main {
     public static void main(String[] args) {
         HashTable tempHashTable = new HashTable();
         tempHashTable.set("nails", 100);
-        tempHashTable.set("tile", 50);
-        tempHashTable.set("lumber", 80);
-        tempHashTable.set("bolts", 240);
-        tempHashTable.set("screws", 140);
-        tempHashTable.set("screws", 120);
-        tempHashTable.printTable();
-        System.out.println(tempHashTable.get("screws"));
-        System.out.println(tempHashTable.keys());
-        int[] array1 = {0,1,2};
-        int[] array2 = {3,4,5};
-        System.out.println(itemInCommon(array1, array2));
+        // tempHashTable.set("tile", 50);
+        // tempHashTable.set("lumber", 80);
+        // tempHashTable.set("bolts", 240);
+        // tempHashTable.set("screws", 140);
+        // tempHashTable.set("screws", 120);
+        // tempHashTable.printTable();
+        // System.out.println(tempHashTable.get("screws"));
+        // System.out.println(tempHashTable.keys());
+        // int[] array1 = {0,1,2};
+        // int[] array2 = {3,4,5};
+        // System.out.println(itemInCommon(array1, array2));
 
-        int[] nums = {1, 2, 3, 2, 1, 4, 5, 4};
-        List<Integer> duplicates = findDuplicates(nums);
-        System.out.println(duplicates); 
+        // int[] nums = {1, 2, 3, 2, 1, 4, 5, 4};
+        // List<Integer> duplicates = findDuplicates(nums);
+        // System.out.println(duplicates); 
 
-        System.out.println("1st set:");
-        System.out.println(groupAnagrams(new String[]{"eat", "tea", "tan", "ate", "nat", "bat"}));
+        // System.out.println("1st set:");
+        // System.out.println(groupAnagrams(new String[]{"eat", "tea", "tan", "ate", "nat", "bat"}));
 
-        System.out.println("\n2nd set:");
-        System.out.println(groupAnagrams(new String[]{"abc", "cba", "bac", "foo", "bar"}));
+        // System.out.println("\n2nd set:");
+        // System.out.println(groupAnagrams(new String[]{"abc", "cba", "bac", "foo", "bar"}));
 
-        System.out.println("\n3rd set:");
-        System.out.println(groupAnagrams(new String[]{"listen", "silent", "triangle", "integral", "garden", "ranged"}));
+        // System.out.println("\n3rd set:");
+        // System.out.println(groupAnagrams(new String[]{"listen", "silent", "triangle", "integral", "garden", "ranged"}));
         
+        testLongestConsecutiveSequence("Consecutive Integers", new int[] {1, 2, 3, 4, 5}, 5);
+        testLongestConsecutiveSequence("No Sequence", new int[] {1, 3, 5, 7, 9}, 1);
+        testLongestConsecutiveSequence("Duplicates", new int[] {1, 2, 2, 3, 4}, 4);
+        testLongestConsecutiveSequence("Negative Numbers", new int[] {1, 0, -1, -2, -3}, 5);
+        testLongestConsecutiveSequence("Empty Array", new int[] {}, 0);
+        testLongestConsecutiveSequence("Multiple Sequences", new int[] {1, 2, 3, 10, 11, 12, 13}, 4);
+        testLongestConsecutiveSequence("Unordered Elements", new int[] {5, 1, 3, 4, 2}, 5);
+        testLongestConsecutiveSequence("Single Element", new int[] {1}, 1);
+        testLongestConsecutiveSequence("All Identical Elements", new int[] {2, 2, 2, 2, 2}, 1);
     }
 
     // Interview Question - return true if any itemInCommon in O(n) time
@@ -61,7 +73,7 @@ public class Main {
             }
         }
         return returnList;
-    }
+    } 
 
     // public static List<Integer> findDuplicates(int[] nums) {    // Udemy solution
     //     Map<Integer, Integer> numCounts = new HashMap<>();
@@ -81,10 +93,6 @@ public class Main {
         int length = string.length();
         if (length==0) return null;
         HashMap<Character, Boolean> tempHashMap = new HashMap<>();
-        /* finding all the methods for a class */
-        // for (int i = 0; i < tempHashMap.getClass().getMethods().length; i++) {
-        //     System.out.println("public method: " + tempHashMap.getClass().getMethods()[i]);
-		// }
         for (int i=0; i<length; i++) {
             char x = string.charAt(i);
             if (!tempHashMap.containsKey(x)) tempHashMap.put(x,true);
@@ -269,4 +277,92 @@ public class Main {
  
         return pairs;
     }
+
+    /* finding all the methods for a class */
+    public static <T> void printMethods(Class<T> clazz) {
+        for (Method method : clazz.getMethods()) {
+            System.out.println("public method: " + method);
+        }
+    }
+
+    // Given an unsorted array of integers, write a function that finds the length of the  longestConsecutiveSequence 
+    // (i.e., a sequence of integers in which each element is one greater than the previous element).
+
+    /**
+     * Test method for longestConsecutiveSequence.
+     * @param title Title of the test
+     * @param nums Input array
+     * @param expected Expected result
+     */
+    private static void testLongestConsecutiveSequence(String title, int[] nums, int expected) {
+        System.out.println("Test: " + title);
+        System.out.print("Testing array: ");
+        for (int num : nums) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    
+        int result = longestConsecutiveSequence(nums);
+        System.out.println("Expected longest streak: " + expected);
+        System.out.println("Actual longest streak: " + result);
+    
+        if (result == expected) {
+            System.out.println("PASS\n");
+        } else {
+            System.out.println("FAIL\n");
+        }
+    }
+
+    public static int longestConsecutiveSequence(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        
+        List<Integer> list = new ArrayList<>();
+        for (int num : nums) {
+            list.add(num);
+        }
+        
+        SortedSet<Integer> sortedSet = new TreeSet<>(list);
+        int tempLength = 1; // Start with 1 since the smallest sequence has at least one number
+        int maxLength = 1;
+        int previous = sortedSet.first();
+        
+        for (int current : sortedSet) {
+            if (current == previous + 1) {
+                tempLength++;
+            } else {
+                tempLength = 1; // Reset tempLength if the sequence breaks
+            }
+            maxLength = Math.max(maxLength, tempLength); // Update maxLength if current sequence is longer
+            previous = current;
+        }
+        
+        return maxLength;
+    }
+
+    // public static int longestConsecutiveSequence(int[] nums) {           // Udemy Solution
+    //     Set<Integer> numSet = new HashSet<>();
+    //     for (int num : nums) {
+    //         numSet.add(num);
+    //     }
+ 
+    //     int longestStreak = 0;
+ 
+    //     for (int num : numSet) {
+    //         if (!numSet.contains(num - 1)) {
+    //             int currentNum = num;
+    //             int currentStreak = 1;
+ 
+    //             while (numSet.contains(currentNum + 1)) {
+    //                 currentNum++;
+    //                 currentStreak++;
+    //             }
+ 
+    //             longestStreak = Math.max(longestStreak, currentStreak);
+    //         }
+    //     }
+ 
+    //     return longestStreak;
+    // }
 }
