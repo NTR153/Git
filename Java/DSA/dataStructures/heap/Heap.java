@@ -12,7 +12,7 @@ public class Heap {
     // For max heap -
     // Each node has a value greater than or equal to it's descendants.
 
-    // For mean heap -
+    // For min heap -
     // Each node has a value less than or equal to it's descendants.
 
     // Sometimes, in order to simplify calculations, we leave the first element empty.
@@ -45,6 +45,8 @@ public class Heap {
         heap.set(index1, heap.get(index2));
         heap.set(index2, temp);
     }
+
+    /* Max Heap */
 
     private void sinkDown(int index) {
         int maxIndex = index;
@@ -82,4 +84,59 @@ public class Heap {
         sinkDown(0);
         return maxValue;
     }
+
+    /* Min Heap */
+    
+    /*
+
+    private void sinkDown(int index) {
+        int minIndex = index;
+        while (true) {
+            int leftIndex = leftChild(index);
+            int rightIndex = rightChild(index);
+
+            if (leftIndex < heap.size() && heap.get(leftIndex) < heap.get(minIndex)) {
+                minIndex = leftIndex;
+            }
+
+            if (rightIndex < heap.size() && heap.get(rightIndex) < heap.get(minIndex)) {
+                minIndex = rightIndex;
+            }
+
+            if (minIndex != index) {
+                swap(index, minIndex);
+                index = minIndex;
+            } else {
+                return;
+            }
+        }
+    }
+
+    public void insert(int value) {
+        heap.add(value);
+        int current = heap.size() - 1;
+        int parentIndex = 0;
+        while (current > 0 && heap.get(current) < heap.get(parentIndex = parent(current))) {
+            swap(current, parentIndex);
+            current = parentIndex;
+        }
+    }
+
+    public Integer remove() {
+        if (heap.size() == 0) {
+            return null;
+        }
+ 
+        if (heap.size() == 1) {
+            return heap.remove(0);
+        }
+ 
+        int minValue = heap.get(0);
+        heap.set(0, heap.remove(heap.size() - 1));
+        sinkDown(0);
+ 
+        return minValue;
+    }
+
+    */
 }
