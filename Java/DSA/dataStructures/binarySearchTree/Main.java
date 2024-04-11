@@ -6,6 +6,7 @@ public class Main {
         tempBST.insert(2);
         tempBST.insert(1);
         tempBST.insert(3);
-        System.out.println(tempBST.contains(4));
+        System.out.println(tempBST.contains(2));
+        System.out.println(tempBST.rContains(5));
     }
 }
