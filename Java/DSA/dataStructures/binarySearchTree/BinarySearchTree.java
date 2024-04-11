@@ -27,6 +27,22 @@ public class BinarySearchTree {
         }
     }
 
+    public void printTree() {
+        printTree(root, "", true);
+    }
+
+    private void printTree(Node node, String prefix, boolean isLeft) {
+        if (node == null) return;
+
+        System.out.print(prefix);
+        System.out.print(isLeft ? "├── " : "└── ");
+        System.out.println(node.value);
+
+        String childPrefix = prefix + (isLeft ? "│   " : "    ");
+        printTree(node.left, childPrefix, true);
+        printTree(node.right, childPrefix, false);
+    }
+
     public boolean insert(int value) {
         Node newNode = new Node(value);
         if (root==null) {
@@ -76,5 +92,33 @@ public class BinarySearchTree {
     public boolean rContains(int value) {
         Node currentNode = root;
         return rContains(currentNode, value);
+    }
+
+    private boolean rInsert(Node currentNode, int value) {
+        if (value==currentNode.value) return false;
+        if (value<currentNode.value) {
+            if (currentNode.left==null) {
+                currentNode.left = new Node(value);
+                return true;
+            }
+            return rInsert(currentNode.left, value);
+        }
+        else {
+            if (currentNode.right==null) {
+                currentNode.right = new Node(value);
+                return true;
+            }
+            return rInsert(currentNode.right, value);
+        }
+    }
+
+    public boolean rInsert(int value) {
+        Node newNode = new Node(value);
+        if (root==null) {
+            root=newNode;
+            return true;
+        }
+        Node currentNode = root;
+        return rInsert(currentNode, value);
     }
 }
