@@ -43,6 +43,18 @@ public class BinarySearchTree {
         printTree(node.right, childPrefix, false);
     }
 
+    public Node getRoot() {
+        return root;
+    }
+
+    public int minValue(Node node) {
+        if (node==null) throw new NullPointerException();
+        while (node.left!=null) {
+            node=node.left;
+        }
+        return node.value;
+    }
+
     public boolean insert(int value) {
         Node newNode = new Node(value);
         if (root==null) {
@@ -113,12 +125,37 @@ public class BinarySearchTree {
     }
 
     public boolean rInsert(int value) {
-        Node newNode = new Node(value);
         if (root==null) {
-            root=newNode;
+            root=new Node(value);
             return true;
         }
         Node currentNode = root;
         return rInsert(currentNode, value);
+    }
+
+    /*  Udemy Solution
+    private Node rInsert(Node currentNode, int value) {
+        if (currentNode == null) return new Node(value);
+ 
+        if (value < currentNode.value) {
+            currentNode.left = rInsert(currentNode.left, value);
+        } else if (value > currentNode.value) {
+            currentNode.right = rInsert(currentNode.right, value);
+        }
+        return currentNode;
+    }
+
+    public void rInsert(int value) {
+        if (root == null) root = new Node(value);
+        rInsert(root, value);
+    }
+    */
+
+    // private Node deleteNode(Node currentNode, int value) {
+
+    // }
+
+    public void deleteNode(int value) {
+
     }
 }
